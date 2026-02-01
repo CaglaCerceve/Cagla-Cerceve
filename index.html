@@ -89,24 +89,55 @@
     .options {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 24px;
+      gap: 28px;
       max-width: 1000px;
       margin: 60px auto;
       padding: 0 20px;
     }
 
-    .option {
+    .option-btn {
       border: 1.5px solid var(--black);
-      padding: 40px 20px;
-      text-align: center;
-      font-weight: 500;
-      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
       cursor: pointer;
+      transition: all 0.25s ease;
+      background: var(--white);
     }
 
-    .option:hover {
+    .option-btn:hover {
       background: var(--black);
       color: var(--white);
+      transform: translateY(-4px);
+    }
+
+    .img-box {
+      height: 180px;
+      background: #eaeaea;
+      overflow: hidden;
+    }
+
+    .img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .option-btn:hover .img-box img {
+      transform: scale(1.08);
+    }
+
+    .option-btn span {
+      padding: 18px;
+      font-size: 16px;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .option-btn:hover .img-box {
+      background: #111;
+      color: #aaa;
     }
 
     /* RESPONSIVE */
@@ -141,10 +172,35 @@
 
   <!-- CAM OPTIONS -->
   <section class="options" id="glassOptions" style="display:none;">
-    <div class="option">Masa Camları</div>
-    <div class="option">Pencere Camları</div>
-    <div class="option">Çerçeve Camları</div>
-    <div class="option">Aynalar</div>
+
+    <div class="option-btn">
+      <div class="img-box">
+  <img src="placeholder.jpg" alt="Cam" />
+</div>
+      <span>Masa Camları</span>
+    </div>
+
+    <div class="option-btn">
+      <div class="img-box">
+  <img src="placeholder.jpg" alt="Cam" />
+</div>
+      <span>Pencere Camları</span>
+    </div>
+
+    <div class="option-btn">
+      <div class="img-box">
+  <img src="placeholder.jpg" alt="Cam" />
+</div>
+      <span>Çerçeve Camları</span>
+    </div>
+
+    <div class="option-btn">
+      <div class="img-box">
+  <img src="placeholder.jpg" alt="Cam" />
+</div>
+      <span>Aynalar</span>
+    </div>
+
   </section>
 
   <script>
