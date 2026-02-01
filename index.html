@@ -5,214 +5,185 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Çağla Çerçeve</title>
 
-  <!-- GOOGLE FONT -->
+  <!-- FONT -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --black: #000000;
-      --white: #ffffff;
-      --gray: #bdbdbd;
+      --black:#000;
+      --white:#fff;
+      --gray:#f2f2f2;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Inter', sans-serif;
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Inter',sans-serif;
     }
 
-    body {
-      background: var(--white);
-      color: var(--black);
+    body{
+      background:var(--white);
+      color:var(--black);
     }
 
     /* HEADER */
-    header {
-      background: var(--black);
-      padding: 18px 24px;
+    header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:var(--black);
     }
 
-    .header-inner {
-      max-width: 1200px;
-      margin: auto;
-      display: flex;
-      align-items: center;
-      gap: 14px;
+    .header-inner{
+      max-width:1200px;
+      margin:auto;
+      padding:16px 20px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
     }
 
-    .logo {
-      background: var(--black);
-      color: var(--white);
-      padding: 8px 16px;
-      font-size: 20px;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      border: 1px solid var(--white);
+    .logo{
+      color:var(--white);
+      font-size:20px;
+      font-weight:600;
+      border:1px solid var(--white);
+      padding:6px 14px;
     }
 
-    /* HOME SELECTION */
-    .home {
-      min-height: calc(100vh - 80px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 40px 20px;
+    /* HAMBURGER */
+    .menu-btn{
+      width:26px;
+      height:18px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      cursor:pointer;
     }
 
-    .home-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 32px;
-      max-width: 700px;
-      width: 100%;
+    .menu-btn span{
+      height:2px;
+      background:var(--white);
+      width:100%;
     }
 
-    .card {
-      border: 2px solid var(--black);
-      padding: 60px 20px;
-      text-align: center;
-      font-size: 22px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.25s ease;
+    /* MENU */
+    .menu{
+      position:fixed;
+      top:0;
+      right:-100%;
+      width:260px;
+      height:100vh;
+      background:var(--black);
+      color:var(--white);
+      padding:80px 24px;
+      transition:0.3s ease;
+      z-index:2000;
     }
 
-    .card:hover {
-      background: var(--black);
-      color: var(--white);
+    .menu.active{right:0;}
+
+    .menu a{
+      display:block;
+      color:var(--white);
+      text-decoration:none;
+      font-size:16px;
+      margin-bottom:24px;
+      font-weight:500;
     }
 
-    /* CAM OPTIONS */
-    .options {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 28px;
-      max-width: 1000px;
-      margin: 60px auto;
-      padding: 0 20px;
+    /* HOME */
+    .home{
+      min-height:calc(100vh - 72px);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:40px 20px;
     }
 
-    .option-btn {
-      border: 1.5px solid var(--black);
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      cursor: pointer;
-      transition: all 0.25s ease;
-      background: var(--white);
+    .home-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:32px;
+      max-width:900px;
+      width:100%;
     }
 
-    .option-btn:hover {
-      background: var(--black);
-      color: var(--white);
-      transform: translateY(-4px);
+    .select-card{
+      border-radius:22px;
+      overflow:hidden;
+      cursor:pointer;
+      transition:transform .3s ease;
+      background:var(--gray);
     }
 
-    .img-box {
-      height: 180px;
-      background: #eaeaea;
-      overflow: hidden;
+    .select-card:hover{transform:translateY(-6px);}
+
+    .select-card img{
+      width:100%;
+      height:240px;
+      object-fit:cover;
+      display:block;
     }
 
-    .img-box img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.3s ease;
-    }
-
-    .option-btn:hover .img-box img {
-      transform: scale(1.08);
-    }
-
-    .option-btn span {
-      padding: 18px;
-      font-size: 16px;
-      font-weight: 600;
-      text-align: center;
-    }
-
-    .option-btn:hover .img-box {
-      background: #111;
-      color: #aaa;
+    .select-card span{
+      display:block;
+      text-align:center;
+      padding:18px;
+      font-size:20px;
+      font-weight:600;
+      background:var(--white);
     }
 
     /* RESPONSIVE */
-    @media (max-width: 768px) {
-      .home-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .card {
-        padding: 48px 20px;
-        font-size: 20px;
-      }
+    @media(max-width:768px){
+      .home-grid{grid-template-columns:1fr;}
+      .select-card img{height:200px;}
     }
   </style>
 </head>
 <body>
 
-  <!-- HEADER -->
-  <header>
-    <div class="header-inner">
-      <div class="logo">Çağla Çerçeve</div>
+<header>
+  <div class="header-inner">
+    <div class="logo">Çağla Çerçeve</div>
+    <div class="menu-btn" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
     </div>
-  </header>
+  </div>
+</header>
 
-  <!-- HOME -->
-  <section class="home" id="home">
-    <div class="home-grid">
-      <div class="card" onclick="goFrames()">Çerçeveler</div>
-      <div class="card" onclick="goGlass()">Camlar</div>
-    </div>
-  </section>
+<nav class="menu" id="menu">
+  <a href="index.html">Ana Sayfa</a>
+  <a href="#">Hakkımızda</a>
+  <a href="#">Bize Ulaşın</a>
+  <a href="#">Adres</a>
+</nav>
 
-  <!-- CAM OPTIONS -->
-  <section class="options" id="glassOptions" style="display:none;">
+<section class="home">
+  <div class="home-grid">
 
-    <div class="option-btn">
-      <div class="img-box">
-  <img src="placeholder.jpg" alt="Cam" />
-</div>
-      <span>Masa Camları</span>
-    </div>
-
-    <div class="option-btn">
-      <div class="img-box">
-  <img src="placeholder.jpg" alt="Cam" />
-</div>
-      <span>Pencere Camları</span>
+    <div class="select-card" onclick="location.href='cerceveler.html'">
+      <img src="cerceve.jpg" alt="Çerçeveler">
+      <span>Çerçeveler</span>
     </div>
 
-    <div class="option-btn">
-      <div class="img-box">
-  <img src="placeholder.jpg" alt="Cam" />
-</div>
-      <span>Çerçeve Camları</span>
+    <div class="select-card" onclick="location.href='camlar.html'">
+      <img src="cam.jpg" alt="Camlar">
+      <span>Camlar</span>
     </div>
 
-    <div class="option-btn">
-      <div class="img-box">
-  <img src="placeholder.jpg" alt="Cam" />
-</div>
-      <span>Aynalar</span>
-    </div>
+  </div>
+</section>
 
-  </section>
-
-  <script>
-    function goFrames() {
-      window.location.href = "cerceveler.html";
-    }
-
-    function goGlass() {
-      document.getElementById('home').style.display = 'none';
-      document.getElementById('glassOptions').style.display = 'grid';
-    }
-  </script>
+<script>
+  function toggleMenu(){
+    document.getElementById('menu').classList.toggle('active');
+  }
+</script>
 
 </body>
 </html>
