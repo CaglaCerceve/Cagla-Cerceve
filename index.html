@@ -177,22 +177,20 @@
   <a href="#">Adres</a>
 </nav>
 
-<section class="home">
+<section class="home" id="home">
   <div class="home-grid">
 
-    <div class="select-card" onclick="location.href='cerceveler.html'">
+    <div class="select-card" onclick="goCerceveler()">
       <img src="cerceve.jpg" alt="Çerçeveler">
       <span>Çerçeveler</span>
     </div>
 
-    <div class="select-card" onclick="location.href='camlar.html'">
+    <div class="select-card" onclick="goCamlar()">
       <img src="cam.jpg" alt="Camlar">
       <span>Camlar</span>
     </div>
 
-  
-
-    <div class="select-card" onclick="location.href='aynalar.html'">
+    <div class="select-card" onclick="goAynalar()">
       <img src="ayna.jpg" alt="Aynalar">
       <span>Aynalar</span>
     </div>
@@ -200,9 +198,35 @@
   </div>
 </section>
 
+<!-- AYNALAR OPTIONS -->
+<section class="home" id="aynaOptions" style="display:none;">
+  <div class="home-grid">
+
+    <div class="select-card"><span>Rodajlı Ayna</span></div>
+    <div class="select-card"><span>Baklava Ayna</span></div>
+    <div class="select-card"><span>Çubuk Ayna</span></div>
+    <div class="select-card"><span>Ledli Daire Ayna</span></div>
+    <div class="select-card"><span>Şekilli Ayna</span></div>
+
+  </div>
+</section>
+
 <script>
   function toggleMenu(){
     document.getElementById('menu').classList.toggle('active');
+  }
+
+  function goCerceveler(){
+    window.location.href='cerceveler.html';
+  }
+
+  function goCamlar(){
+    window.location.href='camlar.html';
+  }
+
+  function goAynalar(){
+    document.getElementById('home').style.display='none';
+    document.getElementById('aynaOptions').style.display='flex';
   }
 </script>
 
