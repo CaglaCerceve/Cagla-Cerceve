@@ -6,38 +6,47 @@
 <title>Çağla Çerçeve</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
-body{background:#fff;color:#000}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial, sans-serif;
+}
+
+body{
+  background:#fff;
+  color:#000;
+}
 
 /* HEADER */
 header{
-  height:110px;
+  height:120px;
   background:#000;
   color:#fff;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding:0 30px;
+  padding:0 32px;
 }
 
-header .logo{
+.logo-area{
   display:flex;
   align-items:center;
-  gap:18px;
+  gap:20px;
 }
 
-header img{
-  height:90px;
+.logo-area img{
+  height:95px;
 }
 
-header span{
-  font-size:30px;
+.logo-area span{
+  font-size:32px;
   font-weight:600;
 }
 
 /* MENU */
 .menu{
-  font-size:34px;
+  font-size:36px;
   cursor:pointer;
   position:relative;
 }
@@ -48,7 +57,7 @@ header span{
   right:0;
   top:60px;
   background:#000;
-  padding:15px 20px;
+  padding:16px 22px;
 }
 
 .menu:hover .menu-content{
@@ -65,7 +74,7 @@ header span{
 /* SECTIONS */
 .section{
   display:none;
-  padding:40px;
+  padding:45px;
 }
 
 .section.active{
@@ -75,8 +84,8 @@ header span{
 /* GRID */
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:28px;
+  grid-template-columns:repeat(auto-fit, minmax(230px, 1fr));
+  gap:30px;
 }
 
 .card{
@@ -86,7 +95,7 @@ header span{
 
 .card img{
   width:100%;
-  height:230px;
+  height:240px;
   object-fit:cover;
   border-radius:22px;
 }
@@ -99,9 +108,16 @@ header span{
 
 /* MOBILE */
 @media(max-width:600px){
-  header{height:90px;padding:0 20px}
-  header img{height:65px}
-  header span{font-size:22px}
+  header{
+    height:95px;
+    padding:0 20px;
+  }
+  .logo-area img{
+    height:65px;
+  }
+  .logo-area span{
+    font-size:22px;
+  }
 }
 </style>
 </head>
@@ -109,17 +125,17 @@ header span{
 <body>
 
 <header>
-  <div class="logo">
+  <div class="logo-area">
     <img src="logo.jpg" alt="Çağla Çerçeve Logo">
     <span>Çağla Çerçeve</span>
   </div>
 
   <div class="menu">☰
     <div class="menu-content">
-      <a onclick="show('home')">Ana Sayfa</a>
-      <a onclick="show('home')">Hakkımızda</a>
-      <a onclick="show('home')">Bize Ulaşın</a>
-      <a onclick="show('home')">Adres</a>
+      <a onclick="showSection('home')">Ana Sayfa</a>
+      <a onclick="showSection('home')">Hakkımızda</a>
+      <a onclick="showSection('home')">Bize Ulaşın</a>
+      <a onclick="showSection('home')">Adres</a>
     </div>
   </div>
 </header>
@@ -127,18 +143,18 @@ header span{
 <!-- ANA SAYFA -->
 <section id="home" class="section active">
   <div class="grid">
-    <div class="card" onclick="show('camlar')">
-      <img src="camlar.jpg">
+    <div class="card" onclick="showSection('camlar')">
+      <img src="camlar.jpg" alt="Camlar">
       <p>Camlar</p>
     </div>
 
-    <div class="card" onclick="show('cerceveler')">
-      <img src="cerceveler.jpg">
+    <div class="card" onclick="showSection('cerceveler')">
+      <img src="cerceveler.jpg" alt="Çerçeveler">
       <p>Çerçeveler</p>
     </div>
 
-    <div class="card" onclick="show('aynalar')">
-      <img src="aynalar.jpg">
+    <div class="card" onclick="showSection('aynalar')">
+      <img src="aynalar.jpg" alt="Aynalar">
       <p>Aynalar</p>
     </div>
   </div>
@@ -147,27 +163,55 @@ header span{
 <!-- CAMLAR -->
 <section id="camlar" class="section">
   <div class="grid">
-    <div class="card"><img src="masa-cami.jpg"><p>Masa Camları</p></div>
-    <div class="card"><img src="pencere-cami.jpg"><p>Pencere Camları</p></div>
-    <div class="card"><img src="isi-cam.jpg"><p>Isı Camlar</p></div>
+    <div class="card">
+      <img src="cam-masa.jpg" alt="Masa Camları">
+      <p>Masa Camları</p>
+    </div>
+    <div class="card">
+      <img src="cam-pencere.jpg" alt="Pencere Camları">
+      <p>Pencere Camları</p>
+    </div>
+    <div class="card">
+      <img src="cam-isi.jpg" alt="Isı Camlar">
+      <p>Isı Camlar</p>
+    </div>
   </div>
 </section>
 
 <!-- AYNALAR -->
 <section id="aynalar" class="section">
   <div class="grid">
-    <div class="card"><img src="rodajli-ayna.jpg"><p>Rodajlı Ayna</p></div>
-    <div class="card"><img src="baklava-ayna.jpg"><p>Baklava Ayna</p></div>
-    <div class="card"><img src="cubuk-ayna.jpg"><p>Çubuk Ayna</p></div>
-    <div class="card"><img src="ledli-daire-ayna.jpg"><p>Ledli Daire Ayna</p></div>
-    <div class="card"><img src="sekilli-ayna.jpg"><p>Şekilli Ayna</p></div>
+    <div class="card">
+      <img src="ayna-rodajli.jpg" alt="Rodajlı Ayna">
+      <p>Rodajlı Ayna</p>
+    </div>
+
+    <div class="card">
+      <img src="ayna-baklava.jpg" alt="Baklava Ayna">
+      <p>Baklava Ayna</p>
+    </div>
+
+    <div class="card">
+      <img src="ayna-cubuk.jpg" alt="Çubuk Ayna">
+      <p>Çubuk Ayna</p>
+    </div>
+
+    <div class="card">
+      <img src="ayna-ledli.jpg" alt="Ledli Daire Ayna">
+      <p>Ledli Daire Ayna</p>
+    </div>
+
+    <div class="card">
+      <img src="ayna-sekilli.jpg" alt="Şekilli Ayna">
+      <p>Şekilli Ayna</p>
+    </div>
   </div>
 </section>
 
 <script>
-function show(id){
+function showSection(id){
   document.querySelectorAll('.section')
-    .forEach(s=>s.classList.remove('active'));
+    .forEach(sec => sec.classList.remove('active'));
   document.getElementById(id).classList.add('active');
 }
 </script>
