@@ -14,7 +14,7 @@
     }
 
     body{
-      background:#f3f3f3;
+      background:#f2f2f2;
       color:#111;
     }
 
@@ -35,7 +35,7 @@
     .header-left{
       display:flex;
       align-items:center;
-      gap:20px;
+      gap:18px;
     }
 
     .header-left img{
@@ -45,12 +45,12 @@
 
     .site-name{
       font-size:34px;
-      font-weight:bold;
+      font-weight:700;
     }
 
     /* MENU BUTTON */
     .menu-btn{
-      width:35px;
+      width:34px;
       cursor:pointer;
     }
 
@@ -90,8 +90,8 @@
       background:#111;
     }
 
-    /* MAIN OPTIONS */
-    .main{
+    /* HOME */
+    .home{
       max-width:1200px;
       margin:60px auto;
       padding:0 20px;
@@ -114,9 +114,10 @@
       transform:translateY(-10px);
     }
 
-    .img{
+    .box img{
       height:200px;
-      background:#dcdcdc;
+      width:100%;
+      object-fit:cover;
       border-radius:18px;
       margin-bottom:15px;
     }
@@ -126,7 +127,7 @@
       font-weight:600;
     }
 
-    /* SUB SECTIONS */
+    /* SECTIONS */
     .section{
       display:none;
       padding:60px 20px;
@@ -154,6 +155,14 @@
       box-shadow:0 12px 25px rgba(0,0,0,0.12);
     }
 
+    .card img{
+      height:200px;
+      width:100%;
+      object-fit:cover;
+      border-radius:18px;
+      margin-bottom:15px;
+    }
+
     .card p{
       font-size:20px;
       font-weight:600;
@@ -161,8 +170,8 @@
 
     /* MOBILE */
     @media(max-width:600px){
-      .site-name{font-size:26px;}
       header{height:100px;}
+      .site-name{font-size:26px;}
       .header-left img{height:70px;}
       nav{top:100px;}
     }
@@ -172,11 +181,11 @@
 
 <header>
   <div class="header-left">
-    <img src="logo.webp" alt="Çağla Çerçeve Logo">
+    <img src="logo.jpg" alt="Çağla Çerçeve Logo">
     <span class="site-name">Çağla Çerçeve</span>
   </div>
 
-  <div class="menu-btn" onclick="menuToggle()">
+  <div class="menu-btn" onclick="toggleMenu()">
     <span></span>
     <span></span>
     <span></span>
@@ -184,26 +193,26 @@
 </header>
 
 <nav id="menu">
-  <a href="#" onclick="home()">Ana Sayfa</a>
+  <a href="#" onclick="goHome()">Ana Sayfa</a>
   <a href="#">Hakkımızda</a>
   <a href="#">Bize Ulaşın</a>
   <a href="#">Adres</a>
 </nav>
 
 <!-- HOME -->
-<section id="home" class="main">
+<section id="home" class="home">
   <div class="box" onclick="openSection('camlar')">
-    <div class="img"></div>
+    <img src="camlar.jpg" alt="Camlar">
     <p>Camlar</p>
   </div>
 
   <div class="box" onclick="openSection('cerceveler')">
-    <div class="img"></div>
+    <img src="cerceveler.jpg" alt="Çerçeveler">
     <p>Çerçeveler</p>
   </div>
 
   <div class="box" onclick="openSection('aynalar')">
-    <div class="img"></div>
+    <img src="aynalar.jpg" alt="Aynalar">
     <p>Aynalar</p>
   </div>
 </section>
@@ -212,9 +221,9 @@
 <section id="camlar" class="section">
   <h2>Cam Türleri</h2>
   <div class="grid">
-    <div class="card"><div class="img"></div><p>Masa Camları</p></div>
-    <div class="card"><div class="img"></div><p>Pencere Camları</p></div>
-    <div class="card"><div class="img"></div><p>Isı Camlar</p></div>
+    <div class="card"><img src="masa-cami.jpg"><p>Masa Camları</p></div>
+    <div class="card"><img src="pencere-cami.jpg"><p>Pencere Camları</p></div>
+    <div class="card"><img src="isi-cam.jpg"><p>Isı Camlar</p></div>
   </div>
 </section>
 
@@ -222,16 +231,16 @@
 <section id="aynalar" class="section">
   <h2>Ayna Türleri</h2>
   <div class="grid">
-    <div class="card"><div class="img"></div><p>Rodajlı Ayna</p></div>
-    <div class="card"><div class="img"></div><p>Baklava Ayna</p></div>
-    <div class="card"><div class="img"></div><p>Çubuk Ayna</p></div>
-    <div class="card"><div class="img"></div><p>Ledli Daire Ayna</p></div>
-    <div class="card"><div class="img"></div><p>Şekilli Ayna</p></div>
+    <div class="card"><img src="rodajli-ayna.jpg"><p>Rodajlı Ayna</p></div>
+    <div class="card"><img src="baklava-ayna.jpg"><p>Baklava Ayna</p></div>
+    <div class="card"><img src="cubuk-ayna.jpg"><p>Çubuk Ayna</p></div>
+    <div class="card"><img src="ledli-daire-ayna.jpg"><p>Ledli Daire Ayna</p></div>
+    <div class="card"><img src="sekilli-ayna.jpg"><p>Şekilli Ayna</p></div>
   </div>
 </section>
 
 <script>
-  function menuToggle(){
+  function toggleMenu(){
     document.getElementById('menu').classList.toggle('active');
   }
 
@@ -242,7 +251,7 @@
     window.scrollTo(0,0);
   }
 
-  function home(){
+  function goHome(){
     document.querySelectorAll('.section').forEach(s=>s.style.display='none');
     document.getElementById('home').style.display='grid';
     document.getElementById('menu').classList.remove('active');
