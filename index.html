@@ -1,225 +1,151 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Çağla Çerçeve</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Çağla Çerçeve</title>
 
-  <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family:Arial, Helvetica, sans-serif;
-    }
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#fff;color:#000}
 
-    body{
-      background:#f2f2f2;
-      color:#111;
-    }
+/* HEADER */
+header{
+  height:110px;
+  background:#000;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 30px;
+}
 
-    /* HEADER */
-    header{
-      height:120px;
-      background:#000;
-      color:#fff;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      padding:0 30px;
-      position:sticky;
-      top:0;
-      z-index:1000;
-    }
+header .logo{
+  display:flex;
+  align-items:center;
+  gap:18px;
+}
 
-    .header-left{
-      display:flex;
-      align-items:center;
-      gap:18px;
-    }
+header img{
+  height:90px;
+}
 
-    .header-left img{
-      height:90px;
-      width:auto;
-    }
+header span{
+  font-size:30px;
+  font-weight:600;
+}
 
-    .site-name{
-      font-size:34px;
-      font-weight:700;
-    }
+/* MENU */
+.menu{
+  font-size:34px;
+  cursor:pointer;
+  position:relative;
+}
 
-    /* MENU BUTTON */
-    .menu-btn{
-      width:34px;
-      cursor:pointer;
-    }
+.menu-content{
+  display:none;
+  position:absolute;
+  right:0;
+  top:60px;
+  background:#000;
+  padding:15px 20px;
+}
 
-    .menu-btn span{
-      display:block;
-      height:4px;
-      background:#fff;
-      margin:7px 0;
-    }
+.menu:hover .menu-content{
+  display:block;
+}
 
-    /* SIDE MENU */
-    nav{
-      position:fixed;
-      top:120px;
-      right:-260px;
-      width:260px;
-      height:100%;
-      background:#000;
-      transition:0.3s ease;
-      display:flex;
-      flex-direction:column;
-    }
+.menu-content a{
+  display:block;
+  color:#fff;
+  text-decoration:none;
+  margin:10px 0;
+}
 
-    nav.active{
-      right:0;
-    }
+/* SECTIONS */
+.section{
+  display:none;
+  padding:40px;
+}
 
-    nav a{
-      color:#fff;
-      text-decoration:none;
-      padding:18px;
-      border-bottom:1px solid #222;
-      font-size:18px;
-    }
+.section.active{
+  display:block;
+}
 
-    nav a:hover{
-      background:#111;
-    }
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:28px;
+}
 
-    /* HOME */
-    .home{
-      max-width:1200px;
-      margin:60px auto;
-      padding:0 20px;
-      display:grid;
-      grid-template-columns:repeat(auto-fit, minmax(260px,1fr));
-      gap:35px;
-    }
+.card{
+  cursor:pointer;
+  text-align:center;
+}
 
-    .box{
-      background:#fff;
-      border-radius:22px;
-      padding:18px;
-      box-shadow:0 15px 30px rgba(0,0,0,0.15);
-      cursor:pointer;
-      transition:0.3s;
-      text-align:center;
-    }
+.card img{
+  width:100%;
+  height:230px;
+  object-fit:cover;
+  border-radius:22px;
+}
 
-    .box:hover{
-      transform:translateY(-10px);
-    }
+.card p{
+  margin-top:12px;
+  font-size:18px;
+  font-weight:500;
+}
 
-    .box img{
-      height:200px;
-      width:100%;
-      object-fit:cover;
-      border-radius:18px;
-      margin-bottom:15px;
-    }
-
-    .box p{
-      font-size:22px;
-      font-weight:600;
-    }
-
-    /* SECTIONS */
-    .section{
-      display:none;
-      padding:60px 20px;
-    }
-
-    .section h2{
-      text-align:center;
-      font-size:34px;
-      margin-bottom:40px;
-    }
-
-    .grid{
-      max-width:1200px;
-      margin:auto;
-      display:grid;
-      grid-template-columns:repeat(auto-fit, minmax(240px,1fr));
-      gap:30px;
-    }
-
-    .card{
-      background:#fff;
-      border-radius:22px;
-      padding:18px;
-      text-align:center;
-      box-shadow:0 12px 25px rgba(0,0,0,0.12);
-    }
-
-    .card img{
-      height:200px;
-      width:100%;
-      object-fit:cover;
-      border-radius:18px;
-      margin-bottom:15px;
-    }
-
-    .card p{
-      font-size:20px;
-      font-weight:600;
-    }
-
-    /* MOBILE */
-    @media(max-width:600px){
-      header{height:100px;}
-      .site-name{font-size:26px;}
-      .header-left img{height:70px;}
-      nav{top:100px;}
-    }
-  </style>
+/* MOBILE */
+@media(max-width:600px){
+  header{height:90px;padding:0 20px}
+  header img{height:65px}
+  header span{font-size:22px}
+}
+</style>
 </head>
+
 <body>
 
 <header>
-  <div class="header-left">
+  <div class="logo">
     <img src="logo.jpg" alt="Çağla Çerçeve Logo">
-    <span class="site-name">Çağla Çerçeve</span>
+    <span>Çağla Çerçeve</span>
   </div>
 
-  <div class="menu-btn" onclick="toggleMenu()">
-    <span></span>
-    <span></span>
-    <span></span>
+  <div class="menu">☰
+    <div class="menu-content">
+      <a onclick="show('home')">Ana Sayfa</a>
+      <a onclick="show('home')">Hakkımızda</a>
+      <a onclick="show('home')">Bize Ulaşın</a>
+      <a onclick="show('home')">Adres</a>
+    </div>
   </div>
 </header>
 
-<nav id="menu">
-  <a href="#" onclick="goHome()">Ana Sayfa</a>
-  <a href="#">Hakkımızda</a>
-  <a href="#">Bize Ulaşın</a>
-  <a href="#">Adres</a>
-</nav>
+<!-- ANA SAYFA -->
+<section id="home" class="section active">
+  <div class="grid">
+    <div class="card" onclick="show('camlar')">
+      <img src="camlar.jpg">
+      <p>Camlar</p>
+    </div>
 
-<!-- HOME -->
-<section id="home" class="home">
-  <div class="box" onclick="openSection('camlar')">
-    <img src="camlar.jpg" alt="Camlar">
-    <p>Camlar</p>
-  </div>
+    <div class="card" onclick="show('cerceveler')">
+      <img src="cerceveler.jpg">
+      <p>Çerçeveler</p>
+    </div>
 
-  <div class="box" onclick="openSection('cerceveler')">
-    <img src="cerceveler.jpg" alt="Çerçeveler">
-    <p>Çerçeveler</p>
-  </div>
-
-  <div class="box" onclick="openSection('aynalar')">
-    <img src="aynalar.jpg" alt="Aynalar">
-    <p>Aynalar</p>
+    <div class="card" onclick="show('aynalar')">
+      <img src="aynalar.jpg">
+      <p>Aynalar</p>
+    </div>
   </div>
 </section>
 
 <!-- CAMLAR -->
 <section id="camlar" class="section">
-  <h2>Cam Türleri</h2>
   <div class="grid">
     <div class="card"><img src="masa-cami.jpg"><p>Masa Camları</p></div>
     <div class="card"><img src="pencere-cami.jpg"><p>Pencere Camları</p></div>
@@ -229,7 +155,6 @@
 
 <!-- AYNALAR -->
 <section id="aynalar" class="section">
-  <h2>Ayna Türleri</h2>
   <div class="grid">
     <div class="card"><img src="rodajli-ayna.jpg"><p>Rodajlı Ayna</p></div>
     <div class="card"><img src="baklava-ayna.jpg"><p>Baklava Ayna</p></div>
@@ -240,22 +165,11 @@
 </section>
 
 <script>
-  function toggleMenu(){
-    document.getElementById('menu').classList.toggle('active');
-  }
-
-  function openSection(id){
-    document.getElementById('home').style.display='none';
-    document.querySelectorAll('.section').forEach(s=>s.style.display='none');
-    document.getElementById(id).style.display='block';
-    window.scrollTo(0,0);
-  }
-
-  function goHome(){
-    document.querySelectorAll('.section').forEach(s=>s.style.display='none');
-    document.getElementById('home').style.display='grid';
-    document.getElementById('menu').classList.remove('active');
-  }
+function show(id){
+  document.querySelectorAll('.section')
+    .forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
 </script>
 
 </body>
