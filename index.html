@@ -24,7 +24,6 @@
     /* HEADER */
     header {
       background: #000;
-      color: #fff;
       height: 100px;
       display: flex;
       align-items: center;
@@ -47,11 +46,13 @@
     .site-name {
       font-size: 28px;
       font-weight: 700;
+      color: #fff;
     }
 
     .menu-btn {
       margin-left: auto;
       font-size: 28px;
+      color: #fff;
       cursor: pointer;
       user-select: none;
     }
@@ -84,22 +85,22 @@
 
     /* MAIN */
     main {
-      padding: 40px 20px;
       max-width: 1200px;
       margin: auto;
+      padding: 50px 20px;
     }
 
     .title {
-      font-size: 32px;
-      font-weight: 700;
-      margin-bottom: 30px;
       text-align: center;
+      font-size: 34px;
+      font-weight: 700;
+      margin-bottom: 40px;
     }
 
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 24px;
+      gap: 28px;
     }
 
     .card {
@@ -109,14 +110,14 @@
 
     .card img {
       width: 100%;
-      height: 220px;
+      height: 230px;
       object-fit: cover;
-      border-radius: 18px;
+      border-radius: 20px;
     }
 
     .card p {
-      margin-top: 12px;
-      font-size: 18px;
+      margin-top: 14px;
+      font-size: 20px;
       font-weight: 600;
     }
 
@@ -157,6 +158,7 @@
 <main>
   <div class="title">Ürün Grupları</div>
 
+  <!-- ANA SAYFA SEÇENEKLERİ -->
   <div class="grid">
     <div class="card">
       <img src="camlar.jpg" alt="Camlar">
