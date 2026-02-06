@@ -15,7 +15,6 @@
   font-family:'Inter',sans-serif;
 }
 
-/* ARKA PLAN */
 html,body{
   background:#e6e6e6;
   min-height:100vh;
@@ -80,10 +79,11 @@ header{
 }
 
 /* MAIN */
+/* 🔥 EN ÖNEMLİ DÜZELTME BURADA */
 main{
   max-width:1200px;
   margin:auto;
-  padding:50px 20px;
+  padding:140px 20px 50px; /* header yüksekliği + boşluk */
 }
 
 /* BAŞLIK */
@@ -94,14 +94,13 @@ main{
   margin-bottom:40px;
 }
 
-/* ANA GRID */
+/* GRID */
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
   gap:28px;
 }
 
-/* KART */
 .card{
   background:#fff;
   border-radius:20px;
@@ -155,12 +154,6 @@ main{
   max-width:90%;
   max-height:90%;
   border-radius:12px;
-  animation:zoom .25s ease;
-}
-
-@keyframes zoom{
-  from{transform:scale(0.8);opacity:0}
-  to{transform:scale(1);opacity:1}
 }
 
 /* MOBİL */
@@ -168,6 +161,7 @@ main{
   header{height:80px;}
   .header-left img{height:55px;}
   .site-name{font-size:22px;}
+  main{padding-top:120px;}
 }
 </style>
 </head>
@@ -232,20 +226,23 @@ main{
     <img src="cerceve-2.jpg" onclick="openLightbox(this.src)">
     <img src="cerceve-3.jpg" onclick="openLightbox(this.src)">
     <img src="cerceve-4.jpg" onclick="openLightbox(this.src)">
-    <!-- cerceve-120.jpg ye kadar -->
   </div>
 </section>
 
 </main>
 
-<!-- LIGHTBOX -->
 <div id="lightbox" onclick="closeLightbox()">
   <img id="lightbox-img">
 </div>
 
 <script>
+const home = document.getElementById("home");
+const mirrors = document.getElementById("mirrors");
+const frames = document.getElementById("frames");
+const menu = document.getElementById("menu");
+
 function toggleMenu(){
-  document.getElementById("menu").classList.toggle("active");
+  menu.classList.toggle("active");
 }
 
 function hideAll(){
@@ -258,19 +255,19 @@ function showHome(){
   hideAll();
   home.classList.remove("hidden");
   menu.classList.remove("active");
-  scrollTo(0,0);
+  window.scrollTo(0,0);
 }
 
 function showMirrors(){
   hideAll();
   mirrors.classList.remove("hidden");
-  scrollTo(0,0);
+  window.scrollTo(0,0);
 }
 
 function showFrames(){
   hideAll();
   frames.classList.remove("hidden");
-  scrollTo(0,0);
+  window.scrollTo(0,0);
 }
 
 function openLightbox(src){
