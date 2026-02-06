@@ -2,122 +2,112 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
+<title>Çağla Cam & Ayna</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Çağla Çerçeve</title>
 
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:Arial, sans-serif;
-}
-
 body{
-  background:#fff;
-  color:#000;
+  margin:0;
+  background:#0e0e0e;
+  font-family:Arial, sans-serif;
+  color:white;
 }
 
 /* HEADER */
 header{
-  height:120px;
-  background:#000;
-  color:#fff;
+  height:80px;
+  background:#111;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding:0 32px;
+  padding:0 20px;
 }
 
-.logo-area{
+/* LOGO */
+.logo{
   display:flex;
   align-items:center;
-  gap:20px;
+  gap:10px;
 }
 
-.logo-area img{
-  height:95px;
+.logo img{
+  height:60px;
 }
 
-.logo-area span{
-  font-size:32px;
-  font-weight:600;
-}
-
-/* MENU */
-.menu{
-  font-size:36px;
-  cursor:pointer;
+/* 3 NOKTA */
+.menu-wrapper{
   position:relative;
 }
 
-.menu-content{
-  display:none;
+.dots{
+  font-size:30px;
+  cursor:pointer;
+  padding:10px;
+}
+
+.menu{
   position:absolute;
-  right:0;
   top:60px;
-  background:#000;
-  padding:16px 22px;
+  right:0;
+  background:#1a1a1a;
+  border-radius:12px;
+  min-width:160px;
+  opacity:0;
+  pointer-events:none;
+  transform:translateY(-10px);
+  transition:.2s;
+  box-shadow:0 10px 30px rgba(0,0,0,.6);
 }
 
-.menu:hover .menu-content{
+.menu a{
   display:block;
-}
-
-.menu-content a{
-  display:block;
-  color:#fff;
+  padding:12px;
   text-decoration:none;
-  margin:10px 0;
+  color:white;
 }
 
-/* SECTIONS */
+.menu a:hover{
+  background:#2a2a2a;
+}
+
+.menu-wrapper.active .menu{
+  opacity:1;
+  pointer-events:auto;
+  transform:translateY(0);
+}
+
+/* SEÇENEKLER */
 .section{
-  display:none;
-  padding:45px;
+  padding:30px;
 }
 
-.section.active{
-  display:block;
-}
-
-/* GRID */
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(230px, 1fr));
-  gap:30px;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
 }
 
 .card{
+  background:#151515;
+  border-radius:18px;
+  overflow:hidden;
   cursor:pointer;
-  text-align:center;
+  transition:.2s;
+}
+
+.card:hover{
+  transform:scale(1.03);
 }
 
 .card img{
   width:100%;
-  height:240px;
+  height:180px;
   object-fit:cover;
-  border-radius:22px;
 }
 
-.card p{
-  margin-top:12px;
-  font-size:18px;
-  font-weight:500;
-}
-
-/* MOBILE */
-@media(max-width:600px){
-  header{
-    height:95px;
-    padding:0 20px;
-  }
-  .logo-area img{
-    height:65px;
-  }
-  .logo-area span{
-    font-size:22px;
-  }
+.card h3{
+  text-align:center;
+  padding:15px;
 }
 </style>
 </head>
@@ -125,95 +115,67 @@ header{
 <body>
 
 <header>
-  <div class="logo-area">
-    <img src="logo.jpg" alt="Çağla Çerçeve Logo">
-    <span>Çağla Çerçeve</span>
+  <div class="logo">
+    <!-- LOGO DOSYASI AYNI KLASÖRDE -->
+    <img src="logo.jpg" alt="Logo">
   </div>
 
-  <div class="menu">☰
-    <div class="menu-content">
-      <a onclick="showSection('home')">Ana Sayfa</a>
-      <a onclick="showSection('home')">Hakkımızda</a>
-      <a onclick="showSection('home')">Bize Ulaşın</a>
-      <a onclick="showSection('home')">Adres</a>
+  <div class="menu-wrapper" id="menuWrapper">
+    <div class="dots" id="dots">⋮</div>
+    <div class="menu">
+      <a href="#">Ana Sayfa</a>
+      <a href="#">Hakkımızda</a>
+      <a href="#">Bize Ulaşın</a>
+      <a href="#">Adres</a>
     </div>
   </div>
 </header>
 
-<!-- ANA SAYFA -->
-<section id="home" class="section active">
-  <div class="grid">
-    <div class="card" onclick="showSection('camlar')">
-      <img src="camlar.jpg" alt="Camlar">
-      <p>Camlar</p>
-    </div>
-
-    <div class="card" onclick="showSection('cerceveler')">
-      <img src="cerceveler.jpg" alt="Çerçeveler">
-      <p>Çerçeveler</p>
-    </div>
-
-    <div class="card" onclick="showSection('aynalar')">
-      <img src="aynalar.jpg" alt="Aynalar">
-      <p>Aynalar</p>
-    </div>
-  </div>
-</section>
-
-<!-- CAMLAR -->
-<section id="camlar" class="section">
-  <div class="grid">
-    <div class="card">
-      <img src="cam-masa.jpg" alt="Masa Camları">
-      <p>Masa Camları</p>
-    </div>
-    <div class="card">
-      <img src="cam-pencere.jpg" alt="Pencere Camları">
-      <p>Pencere Camları</p>
-    </div>
-    <div class="card">
-      <img src="cam-isi.jpg" alt="Isı Camlar">
-      <p>Isı Camlar</p>
-    </div>
-  </div>
-</section>
-
 <!-- AYNALAR -->
-<section id="aynalar" class="section">
+<div class="section">
+  <h2>Aynalar</h2>
   <div class="grid">
+
     <div class="card">
-      <img src="ayna-rodajli.jpg" alt="Rodajlı Ayna">
-      <p>Rodajlı Ayna</p>
+      <img src="ayna-rodajli.jpg">
+      <h3>Rodajlı Ayna</h3>
     </div>
 
     <div class="card">
-      <img src="ayna-baklava.jpg" alt="Baklava Ayna">
-      <p>Baklava Ayna</p>
+      <img src="ayna-baklava.jpg">
+      <h3>Baklava Ayna</h3>
     </div>
 
     <div class="card">
-      <img src="ayna-cubuk.jpg" alt="Çubuk Ayna">
-      <p>Çubuk Ayna</p>
+      <img src="ayna-cubuk.jpg">
+      <h3>Çubuk Ayna</h3>
     </div>
 
     <div class="card">
-      <img src="ayna-ledli.jpg" alt="Ledli Daire Ayna">
-      <p>Ledli Daire Ayna</p>
+      <img src="ayna-ledli-daire.jpg">
+      <h3>Ledli Daire Ayna</h3>
     </div>
 
     <div class="card">
-      <img src="ayna-sekilli.jpg" alt="Şekilli Ayna">
-      <p>Şekilli Ayna</p>
+      <img src="ayna-sekilli.jpg">
+      <h3>Şekilli Ayna</h3>
     </div>
+
   </div>
-</section>
+</div>
 
 <script>
-function showSection(id){
-  document.querySelectorAll('.section')
-    .forEach(sec => sec.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-}
+const dots = document.getElementById("dots");
+const wrapper = document.getElementById("menuWrapper");
+
+dots.addEventListener("click", (e)=>{
+  e.stopPropagation();
+  wrapper.classList.toggle("active");
+});
+
+document.addEventListener("click", ()=>{
+  wrapper.classList.remove("active");
+});
 </script>
 
 </body>
