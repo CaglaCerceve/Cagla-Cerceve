@@ -15,6 +15,7 @@
   font-family:'Inter',sans-serif;
 }
 
+/* ARKA PLAN */
 html,body{
   background:#e6e6e6;
   min-height:100vh;
@@ -64,7 +65,7 @@ header{
   background:#000;
   display:none;
   flex-direction:column;
-  z-index:1001;
+  z-index:999;
 }
 
 .menu a{
@@ -79,11 +80,10 @@ header{
 }
 
 /* MAIN */
-/* 🔥 EN ÖNEMLİ DÜZELTME BURADA */
 main{
   max-width:1200px;
   margin:auto;
-  padding:140px 20px 50px; /* header yüksekliği + boşluk */
+  padding:50px 20px;
 }
 
 /* BAŞLIK */
@@ -101,6 +101,7 @@ main{
   gap:28px;
 }
 
+/* CARD */
 .card{
   background:#fff;
   border-radius:20px;
@@ -108,6 +109,11 @@ main{
   text-align:center;
   cursor:pointer;
   box-shadow:0 10px 25px rgba(0,0,0,0.08);
+  transition:transform .3s;
+}
+
+.card:hover{
+  transform:scale(1.04);
 }
 
 .card img{
@@ -122,46 +128,67 @@ main{
   font-weight:600;
 }
 
-/* INSTAGRAM GRID */
-.frame-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(140px,1fr));
-  gap:4px;
-}
-
-.frame-grid img{
-  width:100%;
-  aspect-ratio:1/1;
-  object-fit:cover;
-  cursor:pointer;
-}
-
-/* GİZLE */
-.hidden{display:none;}
-
-/* LIGHTBOX */
-#lightbox{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,0.85);
+/* GİZLİ */
+.hidden{
   display:none;
-  align-items:center;
-  justify-content:center;
-  z-index:9999;
 }
 
-#lightbox img{
-  max-width:90%;
-  max-height:90%;
-  border-radius:12px;
+/* FOOTER */
+.footer{
+  background:#000;
+  color:#fff;
+  margin-top:80px;
+}
+
+.footer-container{
+  max-width:1200px;
+  margin:auto;
+  padding:50px 20px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:40px;
+}
+
+.footer-box h3{
+  margin-bottom:16px;
+  font-size:20px;
+}
+
+.footer-box a{
+  display:block;
+  color:#ccc;
+  text-decoration:none;
+  margin-bottom:10px;
+}
+
+.footer-box a:hover{
+  color:#fff;
+}
+
+.footer-box p{
+  color:#ccc;
+  margin-bottom:8px;
+}
+
+.phone{
+  font-size:20px;
+  font-weight:700;
+  color:#fff;
+}
+
+.footer-bottom{
+  background:#111;
+  text-align:center;
+  padding:15px;
+  font-size:14px;
+  color:#aaa;
 }
 
 /* MOBİL */
 @media(max-width:600px){
-  header{height:80px;}
-  .header-left img{height:55px;}
-  .site-name{font-size:22px;}
-  main{padding-top:120px;}
+  header{height:80px}
+  .header-left img{height:55px}
+  .site-name{font-size:22px}
 }
 </style>
 </head>
@@ -185,16 +212,16 @@ main{
 
 <main>
 
-<!-- ANA SAYFA -->
 <section id="home">
   <div class="title">Ürün Grupları</div>
   <div class="grid">
+
     <div class="card">
       <img src="camlar.jpg">
       <p>Camlar</p>
     </div>
 
-    <div class="card" onclick="showFrames()">
+    <div class="card">
       <img src="cerceveler.jpg">
       <p>Çerçeveler</p>
     </div>
@@ -203,80 +230,76 @@ main{
       <img src="ayna-rodajli.jpg">
       <p>Aynalar</p>
     </div>
+
   </div>
 </section>
 
-<!-- AYNALAR -->
 <section id="mirrors" class="hidden">
   <div class="title">Ayna Türleri</div>
   <div class="grid">
-    <div class="card"><img src="ayna-rodajli.jpg" onclick="openLightbox(this.src)"><p>Rodajlı Ayna</p></div>
-    <div class="card"><img src="ayna-baklava.jpg" onclick="openLightbox(this.src)"><p>Baklava Ayna</p></div>
-    <div class="card"><img src="ayna-cubuk.jpg" onclick="openLightbox(this.src)"><p>Çubuk Ayna</p></div>
-    <div class="card"><img src="ayna-ledli.jpg" onclick="openLightbox(this.src)"><p>Ledli Daire Ayna</p></div>
-    <div class="card"><img src="ayna-sekilli.jpg" onclick="openLightbox(this.src)"><p>Şekilli Ayna</p></div>
-  </div>
-</section>
-
-<!-- ÇERÇEVELER -->
-<section id="frames" class="hidden">
-  <div class="title">Çerçeveler</div>
-  <div class="frame-grid">
-    <img src="cerceve-1.jpg" onclick="openLightbox(this.src)">
-    <img src="cerceve-2.jpg" onclick="openLightbox(this.src)">
-    <img src="cerceve-3.jpg" onclick="openLightbox(this.src)">
-    <img src="cerceve-4.jpg" onclick="openLightbox(this.src)">
+    <div class="card"><img src="ayna-rodajli.jpg"><p>Rodajlı Ayna</p></div>
+    <div class="card"><img src="ayna-baklava.jpg"><p>Baklava Ayna</p></div>
+    <div class="card"><img src="ayna-cubuk.jpg"><p>Çubuk Ayna</p></div>
+    <div class="card"><img src="ayna-ledli.jpg"><p>Ledli Daire Ayna</p></div>
+    <div class="card"><img src="ayna-sekilli.jpg"><p>Şekilli Ayna</p></div>
   </div>
 </section>
 
 </main>
 
-<div id="lightbox" onclick="closeLightbox()">
-  <img id="lightbox-img">
-</div>
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-container">
+
+    <div class="footer-box">
+      <h3>Bağlantılar</h3>
+      <a href="#" onclick="showHome()">Anasayfa</a>
+      <a href="#">Hakkımızda</a>
+      <a href="#">Haberler</a>
+      <a href="#">İletişim</a>
+    </div>
+
+    <div class="footer-box">
+      <h3>Haber & Duyurular</h3>
+      <p>Ünye cam tamir ustası</p>
+      <p>Ünye cam tamircisi</p>
+      <p>Ünye katlanır cam balkon</p>
+      <p>Ünye çerçeve ustası</p>
+      <p>Ünye ayna ustası</p>
+    </div>
+
+    <div class="footer-box">
+      <h3>Sosyal Medya</h3>
+      <p>Instagram</p>
+      <p>Facebook</p>
+
+      <h3 style="margin-top:20px">Destek Hattı</h3>
+      <p class="phone">0 535 445 80 61</p>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    https://www.unyecamci.com/ © 2026 - Tüm Hakları Saklıdır
+  </div>
+</footer>
 
 <script>
-const home = document.getElementById("home");
-const mirrors = document.getElementById("mirrors");
-const frames = document.getElementById("frames");
-const menu = document.getElementById("menu");
-
 function toggleMenu(){
-  menu.classList.toggle("active");
-}
-
-function hideAll(){
-  home.classList.add("hidden");
-  mirrors.classList.add("hidden");
-  frames.classList.add("hidden");
-}
-
-function showHome(){
-  hideAll();
-  home.classList.remove("hidden");
-  menu.classList.remove("active");
-  window.scrollTo(0,0);
+  document.getElementById("menu").classList.toggle("active");
 }
 
 function showMirrors(){
-  hideAll();
-  mirrors.classList.remove("hidden");
+  document.getElementById("home").classList.add("hidden");
+  document.getElementById("mirrors").classList.remove("hidden");
   window.scrollTo(0,0);
 }
 
-function showFrames(){
-  hideAll();
-  frames.classList.remove("hidden");
+function showHome(){
+  document.getElementById("mirrors").classList.add("hidden");
+  document.getElementById("home").classList.remove("hidden");
+  document.getElementById("menu").classList.remove("active");
   window.scrollTo(0,0);
-}
-
-function openLightbox(src){
-  document.getElementById("lightbox-img").src = src;
-  document.getElementById("lightbox").style.display = "flex";
-}
-
-function closeLightbox(){
-  document.getElementById("lightbox").style.display = "none";
 }
 </script>
 
