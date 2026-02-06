@@ -1,140 +1,151 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <title>Çağla Çerçeve</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>Çağla Çerçeve</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Inter', sans-serif;
-    }
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
 
-    body {
-      background: #f2f2f2; /* GRİ ARKA PLAN */
-      color: #111;
-    }
+/* ZORLA GRİ */
+html,
+body {
+  background-color: #e6e6e6 !important;
+  min-height: 100vh;
+}
 
-    /* HEADER */
-    header {
-      background: #000;
-      height: 100px;
-      display: flex;
-      align-items: center;
-      padding: 0 24px;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
+/* HEADER */
+header {
+  background: #000;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
 
-    .header-left {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
 
-    .header-left img {
-      height: 70px;
-    }
+.header-left img {
+  height: 70px;
+}
 
-    .site-name {
-      font-size: 28px;
-      font-weight: 700;
-      color: #fff;
-    }
+.site-name {
+  color: #fff;
+  font-size: 28px;
+  font-weight: 700;
+}
 
-    .menu-btn {
-      margin-left: auto;
-      font-size: 28px;
-      color: #fff;
-      cursor: pointer;
-    }
+.menu-btn {
+  margin-left: auto;
+  font-size: 30px;
+  color: #fff;
+  cursor: pointer;
+}
 
-    /* MENU */
-    .menu {
-      position: fixed;
-      top: 100px;
-      right: 0;
-      width: 220px;
-      background: #000;
-      display: none;
-      flex-direction: column;
-    }
+/* MENU */
+.menu {
+  position: fixed;
+  top: 100px;
+  right: 0;
+  width: 220px;
+  background: #000;
+  display: none;
+  flex-direction: column;
+}
 
-    .menu a {
-      color: #fff;
-      text-decoration: none;
-      padding: 16px;
-      border-bottom: 1px solid #333;
-    }
+.menu a {
+  color: #fff;
+  padding: 16px;
+  text-decoration: none;
+  border-bottom: 1px solid #333;
+}
 
-    .menu.active {
-      display: flex;
-    }
+.menu.active {
+  display: flex;
+}
 
-    /* MAIN */
-    main {
-      max-width: 1200px;
-      margin: auto;
-      padding: 50px 20px;
-    }
+/* MAIN – ZORLA GRİ */
+main {
+  background-color: #e6e6e6 !important;
+  max-width: 1200px;
+  margin: auto;
+  padding: 50px 20px;
+}
 
-    .title {
-      text-align: center;
-      font-size: 34px;
-      font-weight: 700;
-      margin-bottom: 40px;
-    }
+/* BAŞLIK */
+.title {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 40px;
+}
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 28px;
-    }
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 28px;
+}
 
-    .card {
-      cursor: pointer;
-      text-align: center;
-    }
+/* KARTLAR BEYAZ */
+.card {
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
 
-    .card img {
-      width: 100%;
-      height: 230px;
-      object-fit: cover;
-      border-radius: 20px;
-    }
+.card img {
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+}
 
-    .card p {
-      margin-top: 14px;
-      font-size: 20px;
-      font-weight: 600;
-    }
+.card p {
+  padding: 16px 0;
+  font-size: 20px;
+  font-weight: 600;
+}
 
-    /* GİZLİ BÖLÜM */
-    .hidden {
-      display: none;
-    }
+/* GİZLİ */
+.hidden {
+  display: none;
+}
 
-    @media (max-width: 600px) {
-      header {
-        height: 80px;
-      }
+/* MOBİL */
+@media (max-width: 600px) {
+  header {
+    height: 80px;
+  }
 
-      .header-left img {
-        height: 55px;
-      }
+  .header-left img {
+    height: 55px;
+  }
 
-      .site-name {
-        font-size: 22px;
-      }
-    }
-  </style>
+  .site-name {
+    font-size: 22px;
+  }
+}
+</style>
 </head>
+
 <body>
 
 <header>
@@ -142,7 +153,6 @@
     <img src="logo.png" alt="Çağla Çerçeve Logo">
     <div class="site-name">Çağla Çerçeve</div>
   </div>
-
   <div class="menu-btn" onclick="toggleMenu()">☰</div>
 </header>
 
@@ -155,77 +165,56 @@
 
 <main>
 
-  <!-- ANA SAYFA -->
-  <div id="home">
-    <div class="title">Ürün Grupları</div>
+<section id="home">
+  <div class="title">Ürün Grupları</div>
+  <div class="grid">
+    <div class="card">
+      <img src="camlar.jpg">
+      <p>Camlar</p>
+    </div>
 
-    <div class="grid">
-      <div class="card">
-        <img src="camlar.jpg">
-        <p>Camlar</p>
-      </div>
+    <div class="card">
+      <img src="cerceveler.jpg">
+      <p>Çerçeveler</p>
+    </div>
 
-      <div class="card">
-        <img src="cerceveler.jpg">
-        <p>Çerçeveler</p>
-      </div>
-
-      <div class="card" onclick="showMirrors()">
-        <img src="ayna-rodajli.jpg">
-        <p>Aynalar</p>
-      </div>
+    <div class="card" onclick="showMirrors()">
+      <img src="ayna-rodajli.jpg">
+      <p>Aynalar</p>
     </div>
   </div>
+</section>
 
-  <!-- AYNALAR -->
-  <div id="mirrors" class="hidden">
-    <div class="title">Ayna Türleri</div>
-
-    <div class="grid">
-      <div class="card">
-        <img src="ayna-rodajli.jpg">
-        <p>Rodajlı Ayna</p>
-      </div>
-
-      <div class="card">
-        <img src="ayna-baklava.jpg">
-        <p>Baklava Ayna</p>
-      </div>
-
-      <div class="card">
-        <img src="ayna-cubuk.jpg">
-        <p>Çubuk Ayna</p>
-      </div>
-
-      <div class="card">
-        <img src="ayna-ledli.jpg">
-        <p>Ledli Daire Ayna</p>
-      </div>
-
-      <div class="card">
-        <img src="ayna-sekilli.jpg">
-        <p>Şekilli Ayna</p>
-      </div>
-    </div>
+<section id="mirrors" class="hidden">
+  <div class="title">Ayna Türleri</div>
+  <div class="grid">
+    <div class="card"><img src="ayna-rodajli.jpg"><p>Rodajlı Ayna</p></div>
+    <div class="card"><img src="ayna-baklava.jpg"><p>Baklava Ayna</p></div>
+    <div class="card"><img src="ayna-cubuk.jpg"><p>Çubuk Ayna</p></div>
+    <div class="card"><img src="ayna-ledli.jpg"><p>Ledli Daire Ayna</p></div>
+    <div class="card"><img src="ayna-sekilli.jpg"><p>Şekilli Ayna</p></div>
   </div>
+</section>
 
 </main>
 
 <script>
-  function toggleMenu() {
-    document.getElementById("menu").classList.toggle("active");
-  }
+function toggleMenu() {
+  document.getElementById("menu").classList.toggle("active");
+}
 
-  function showMirrors() {
-    document.getElementById("home").style.display = "none";
-    document.getElementById("mirrors").style.display = "block";
-  }
+function showMirrors() {
+  document.getElementById("home").classList.add("hidden");
+  document.getElementById("mirrors").classList.remove("hidden");
+  window.scrollTo(0,0);
+}
 
-  function showHome() {
-    document.getElementById("mirrors").style.display = "none";
-    document.getElementById("home").style.display = "block";
-    toggleMenu();
-  }
+function showHome() {
+  document.getElementById("mirrors").classList.add("hidden");
+  document.getElementById("home").classList.remove("hidden");
+  document.getElementById("menu").classList.remove("active");
+  window.scrollTo(0,0);
+}
 </script>
 
 </body>
