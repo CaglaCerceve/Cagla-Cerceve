@@ -2,146 +2,94 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<title>Çağla Çerçeve</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<title>Aynalar Sitesi</title>
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Inter', sans-serif;
-}
-
-/* ZORLA GRİ */
-html,
-body {
-  background-color: #e6e6e6 !important;
-  min-height: 100vh;
+/* 🔴 EN ÖNEMLİ KISIM */
+html, body {
+    margin: 0;
+    padding: 0;
+    background-color: #bfbfbf !important; /* KESİN GRİ */
+    font-family: Arial, sans-serif;
 }
 
 /* HEADER */
 header {
-  background: #000;
-  height: 100px;
-  display: flex;
-  align-items: center;
-  padding: 0 24px;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+    background: #2b2b2b;
+    color: white;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.header-left {
-  display: flex;
-  align-items: center;
-  gap: 16px;
+header img {
+    height: 40px;
 }
 
-.header-left img {
-  height: 70px;
-}
-
-.site-name {
-  color: #fff;
-  font-size: 28px;
-  font-weight: 700;
-}
-
+/* 3 NOKTA */
 .menu-btn {
-  margin-left: auto;
-  font-size: 30px;
-  color: #fff;
-  cursor: pointer;
+    font-size: 26px;
+    cursor: pointer;
+    user-select: none;
 }
 
-/* MENU */
+/* MENÜ */
 .menu {
-  position: fixed;
-  top: 100px;
-  right: 0;
-  width: 220px;
-  background: #000;
-  display: none;
-  flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 16px;
+    background: #333;
+    border-radius: 8px;
+    display: none;
+    flex-direction: column;
+    min-width: 180px;
+    z-index: 1000;
 }
 
-.menu a {
-  color: #fff;
-  padding: 16px;
-  text-decoration: none;
-  border-bottom: 1px solid #333;
+.menu button {
+    background: none;
+    border: none;
+    color: white;
+    padding: 12px;
+    text-align: left;
+    cursor: pointer;
 }
 
-.menu.active {
-  display: flex;
+.menu button:hover {
+    background: #444;
 }
 
-/* MAIN – ZORLA GRİ */
+/* İÇERİK */
 main {
-  background-color: #e6e6e6 !important;
-  max-width: 1200px;
-  margin: auto;
-  padding: 50px 20px;
+    padding: 20px;
 }
 
-/* BAŞLIK */
-.title {
-  text-align: center;
-  font-size: 32px;
-  font-weight: 700;
-  margin-bottom: 40px;
+/* GALERİ */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
 }
 
-/* GRID */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 28px;
-}
-
-/* KARTLAR BEYAZ */
 .card {
-  background: #fff;
-  border-radius: 20px;
-  overflow: hidden;
-  text-align: center;
-  cursor: pointer;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    background: #e0e0e0; /* açık gri */
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
 }
 
 .card img {
-  width: 100%;
-  height: 230px;
-  object-fit: cover;
-}
-
-.card p {
-  padding: 16px 0;
-  font-size: 20px;
-  font-weight: 600;
-}
-
-/* GİZLİ */
-.hidden {
-  display: none;
+    width: 100%;
+    border-radius: 8px;
 }
 
 /* MOBİL */
 @media (max-width: 600px) {
-  header {
-    height: 80px;
-  }
-
-  .header-left img {
-    height: 55px;
-  }
-
-  .site-name {
-    font-size: 22px;
-  }
+    header img {
+        height: 34px;
+    }
 }
 </style>
 </head>
@@ -149,71 +97,67 @@ main {
 <body>
 
 <header>
-  <div class="header-left">
-    <img src="logo.png" alt="Çağla Çerçeve Logo">
-    <div class="site-name">Çağla Çerçeve</div>
-  </div>
-  <div class="menu-btn" onclick="toggleMenu()">☰</div>
+    <img src="logo.png" alt="Logo">
+    <div class="menu-btn" onclick="toggleMenu()">⋮</div>
 </header>
 
 <div class="menu" id="menu">
-  <a href="#" onclick="showHome()">Ana Sayfa</a>
-  <a href="#">Hakkımızda</a>
-  <a href="#">Bize Ulaşın</a>
-  <a href="#">Adres</a>
+    <button onclick="showSection('aynalar')">Aynalar</button>
+    <button onclick="showSection('cerceveler')">Çerçeveler</button>
+    <button onclick="showSection('camlar')">Camlar</button>
 </div>
 
-<main>
-
-<section id="home">
-  <div class="title">Ürün Grupları</div>
-  <div class="grid">
-    <div class="card">
-      <img src="camlar.jpg">
-      <p>Camlar</p>
-    </div>
-
-    <div class="card">
-      <img src="cerceveler.jpg">
-      <p>Çerçeveler</p>
-    </div>
-
-    <div class="card" onclick="showMirrors()">
-      <img src="ayna-rodajli.jpg">
-      <p>Aynalar</p>
-    </div>
-  </div>
-</section>
-
-<section id="mirrors" class="hidden">
-  <div class="title">Ayna Türleri</div>
-  <div class="grid">
-    <div class="card"><img src="ayna-rodajli.jpg"><p>Rodajlı Ayna</p></div>
-    <div class="card"><img src="ayna-baklava.jpg"><p>Baklava Ayna</p></div>
-    <div class="card"><img src="ayna-cubuk.jpg"><p>Çubuk Ayna</p></div>
-    <div class="card"><img src="ayna-ledli.jpg"><p>Ledli Daire Ayna</p></div>
-    <div class="card"><img src="ayna-sekilli.jpg"><p>Şekilli Ayna</p></div>
-  </div>
-</section>
-
+<main id="content">
+    <h2>Hoş geldiniz</h2>
+    <p>Menüden kategori seçiniz.</p>
 </main>
 
 <script>
 function toggleMenu() {
-  document.getElementById("menu").classList.toggle("active");
+    const menu = document.getElementById("menu");
+    menu.style.display = menu.style.display === "flex" ? "none" : "flex";
 }
 
-function showMirrors() {
-  document.getElementById("home").classList.add("hidden");
-  document.getElementById("mirrors").classList.remove("hidden");
-  window.scrollTo(0,0);
-}
+/* MOBİLDE TIKLAYINCA KAPANSIN */
+document.addEventListener("click", function(e) {
+    const menu = document.getElementById("menu");
+    const btn = document.querySelector(".menu-btn");
+    if (!menu.contains(e.target) && !btn.contains(e.target)) {
+        menu.style.display = "none";
+    }
+});
 
-function showHome() {
-  document.getElementById("mirrors").classList.add("hidden");
-  document.getElementById("home").classList.remove("hidden");
-  document.getElementById("menu").classList.remove("active");
-  window.scrollTo(0,0);
+function showSection(type) {
+    const content = document.getElementById("content");
+
+    if (type === "aynalar") {
+        content.innerHTML = `
+        <h2>Aynalar</h2>
+        <div class="gallery">
+            <div class="card">
+                <img src="ayna-rodajli.jpg">
+                <p>Rodajlı Ayna</p>
+            </div>
+            <div class="card">
+                <img src="ayna-ledli.jpg">
+                <p>Ledli Daire Ayna</p>
+            </div>
+        </div>`;
+    }
+
+    if (type === "cerceveler") {
+        content.innerHTML = `
+        <h2>Çerçeveler</h2>
+        <p>Çerçeve ürünleri burada.</p>`;
+    }
+
+    if (type === "camlar") {
+        content.innerHTML = `
+        <h2>Camlar</h2>
+        <p>Cam ürünleri burada.</p>`;
+    }
+
+    document.getElementById("menu").style.display = "none";
 }
 </script>
 
