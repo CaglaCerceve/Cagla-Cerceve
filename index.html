@@ -2,99 +2,146 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
+<title>Çağla Çerçeve</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ayna & Cam</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
 /* ZORLA GRİ */
-html, body {
-    margin: 0;
-    padding: 0;
-    background-color: #bfbfbf !important;
-    font-family: Arial, sans-serif;
+html,
+body {
+  background-color: #e6e6e6 !important;
+  min-height: 100vh;
 }
 
 /* HEADER */
 header {
-    background: #2b2b2b;
-    color: white;
-    padding: 12px 16px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  background: #000;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-header img {
-    height: 40px;
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
 
-/* 3 NOKTA */
+.header-left img {
+  height: 70px;
+}
+
+.site-name {
+  color: #fff;
+  font-size: 28px;
+  font-weight: 700;
+}
+
 .menu-btn {
-    font-size: 26px;
-    cursor: pointer;
+  margin-left: auto;
+  font-size: 30px;
+  color: #fff;
+  cursor: pointer;
 }
 
-/* MENÜ */
+/* MENU */
 .menu {
-    position: absolute;
-    top: 60px;
-    right: 16px;
-    background: #333;
-    border-radius: 8px;
-    display: none;
-    flex-direction: column;
-    min-width: 170px;
-    z-index: 999;
+  position: fixed;
+  top: 100px;
+  right: 0;
+  width: 220px;
+  background: #000;
+  display: none;
+  flex-direction: column;
 }
 
-.menu button {
-    background: none;
-    border: none;
-    color: white;
-    padding: 12px;
-    text-align: left;
-    cursor: pointer;
+.menu a {
+  color: #fff;
+  padding: 16px;
+  text-decoration: none;
+  border-bottom: 1px solid #333;
 }
 
-.menu button:hover {
-    background: #444;
+.menu.active {
+  display: flex;
 }
 
-/* ANA İÇERİK */
+/* MAIN – ZORLA GRİ */
 main {
-    padding: 20px;
+  background-color: #e6e6e6 !important;
+  max-width: 1200px;
+  margin: auto;
+  padding: 50px 20px;
 }
 
-/* KARTLAR */
+/* BAŞLIK */
+.title {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+
+/* GRID */
 .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 16px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 28px;
 }
 
+/* KARTLAR BEYAZ */
 .card {
-    background: #e0e0e0;
-    border-radius: 10px;
-    padding: 12px;
-    text-align: center;
-    cursor: pointer;
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
 }
 
 .card img {
-    width: 100%;
-    border-radius: 8px;
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
 }
 
-.card h3 {
-    margin: 10px 0 0;
+.card p {
+  padding: 16px 0;
+  font-size: 20px;
+  font-weight: 600;
 }
 
-/* GERİ BUTONU */
-.back {
-    margin-bottom: 16px;
-    cursor: pointer;
-    color: #222;
-    font-weight: bold;
+/* GİZLİ */
+.hidden {
+  display: none;
+}
+
+/* MOBİL */
+@media (max-width: 600px) {
+  header {
+    height: 80px;
+  }
+
+  .header-left img {
+    height: 55px;
+  }
+
+  .site-name {
+    font-size: 22px;
+  }
 }
 </style>
 </head>
@@ -102,88 +149,72 @@ main {
 <body>
 
 <header>
-    <img src="logo.png" alt="Logo">
-    <div class="menu-btn" onclick="toggleMenu()">⋮</div>
+  <div class="header-left">
+    <img src="logo.png" alt="Çağla Çerçeve Logo">
+    <div class="site-name">Çağla Çerçeve</div>
+  </div>
+  <div class="menu-btn" onclick="toggleMenu()">☰</div>
 </header>
 
 <div class="menu" id="menu">
-    <button onclick="home()">Ana Sayfa</button>
-    <button onclick="showAynalar()">Aynalar</button>
-    <button onclick="showCerceveler()">Çerçeveler</button>
-    <button onclick="showCamlar()">Camlar</button>
+  <a href="#" onclick="showHome()">Ana Sayfa</a>
+  <a href="#">Hakkımızda</a>
+  <a href="#">Bize Ulaşın</a>
+  <a href="#">Adres</a>
 </div>
 
-<main id="content"></main>
+<main>
+
+<section id="home">
+  <div class="title">Ürün Grupları</div>
+  <div class="grid">
+    <div class="card">
+      <img src="camlar.jpg">
+      <p>Camlar</p>
+    </div>
+
+    <div class="card">
+      <img src="cerceveler.jpg">
+      <p>Çerçeveler</p>
+    </div>
+
+    <div class="card" onclick="showMirrors()">
+      <img src="ayna-rodajli.jpg">
+      <p>Aynalar</p>
+    </div>
+  </div>
+</section>
+
+<section id="mirrors" class="hidden">
+  <div class="title">Ayna Türleri</div>
+  <div class="grid">
+    <div class="card"><img src="ayna-rodajli.jpg"><p>Rodajlı Ayna</p></div>
+    <div class="card"><img src="ayna-baklava.jpg"><p>Baklava Ayna</p></div>
+    <div class="card"><img src="ayna-cubuk.jpg"><p>Çubuk Ayna</p></div>
+    <div class="card"><img src="ayna-ledli.jpg"><p>Ledli Daire Ayna</p></div>
+    <div class="card"><img src="ayna-sekilli.jpg"><p>Şekilli Ayna</p></div>
+  </div>
+</section>
+
+</main>
 
 <script>
 function toggleMenu() {
-    const menu = document.getElementById("menu");
-    menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+  document.getElementById("menu").classList.toggle("active");
 }
 
-document.addEventListener("click", e => {
-    const menu = document.getElementById("menu");
-    const btn = document.querySelector(".menu-btn");
-    if (!menu.contains(e.target) && !btn.contains(e.target)) {
-        menu.style.display = "none";
-    }
-});
-
-/* ANA SAYFA */
-function home() {
-    document.getElementById("content").innerHTML = `
-    <h2>Kategoriler</h2>
-    <div class="grid">
-        <div class="card" onclick="showAynalar()">
-            <img src="ayna-rodajli.jpg">
-            <h3>Aynalar</h3>
-        </div>
-        <div class="card" onclick="showCerceveler()">
-            <img src="cerceve.jpg">
-            <h3>Çerçeveler</h3>
-        </div>
-        <div class="card" onclick="showCamlar()">
-            <img src="cam.jpg">
-            <h3>Camlar</h3>
-        </div>
-    </div>`;
+function showMirrors() {
+  document.getElementById("home").classList.add("hidden");
+  document.getElementById("mirrors").classList.remove("hidden");
+  window.scrollTo(0,0);
 }
 
-/* AYNALAR */
-function showAynalar() {
-    document.getElementById("content").innerHTML = `
-    <div class="back" onclick="home()">← Geri</div>
-    <h2>Aynalar</h2>
-    <div class="grid">
-        <div class="card">
-            <img src="ayna-rodajli.jpg">
-            <p>Rodajlı Ayna</p>
-        </div>
-        <div class="card">
-            <img src="ayna-ledli.jpg">
-            <p>Ledli Daire Ayna</p>
-        </div>
-    </div>`;
+function showHome() {
+  document.getElementById("mirrors").classList.add("hidden");
+  document.getElementById("home").classList.remove("hidden");
+  document.getElementById("menu").classList.remove("active");
+  window.scrollTo(0,0);
 }
-
-/* ÇERÇEVELER */
-function showCerceveler() {
-    document.getElementById("content").innerHTML = `
-    <div class="back" onclick="home()">← Geri</div>
-    <h2>Çerçeveler</h2>
-    <p>Çerçeve ürünleri buraya eklenecek.</p>`;
-}
-
-/* CAMLAR */
-function showCamlar() {
-    document.getElementById("content").innerHTML = `
-    <div class="back" onclick="home()">← Geri</div>
-    <h2>Camlar</h2>
-    <p>Cam ürünleri buraya eklenecek.</p>`;
-}
-
-/* İLK AÇILIŞ */
-home();
 </script>
 
 </body>
