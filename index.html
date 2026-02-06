@@ -15,7 +15,7 @@
   font-family:'Inter',sans-serif;
 }
 
-/* ARKA PLAN GRİ */
+/* ARKA PLAN */
 html,body{
   background:#e6e6e6;
   min-height:100vh;
@@ -65,6 +65,7 @@ header{
   background:#000;
   display:none;
   flex-direction:column;
+  z-index:1001;
 }
 
 .menu a{
@@ -122,10 +123,7 @@ main{
   font-weight:600;
 }
 
-/* GİZLE */
-.hidden{display:none;}
-
-/* INSTAGRAM TARZI ÇERÇEVE GRID */
+/* INSTAGRAM GRID */
 .frame-grid{
   display:grid;
   grid-template-columns:repeat(auto-fill,minmax(140px,1fr));
@@ -137,6 +135,32 @@ main{
   aspect-ratio:1/1;
   object-fit:cover;
   cursor:pointer;
+}
+
+/* GİZLE */
+.hidden{display:none;}
+
+/* LIGHTBOX */
+#lightbox{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.85);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:9999;
+}
+
+#lightbox img{
+  max-width:90%;
+  max-height:90%;
+  border-radius:12px;
+  animation:zoom .25s ease;
+}
+
+@keyframes zoom{
+  from{transform:scale(0.8);opacity:0}
+  to{transform:scale(1);opacity:1}
 }
 
 /* MOBİL */
@@ -192,57 +216,70 @@ main{
 <section id="mirrors" class="hidden">
   <div class="title">Ayna Türleri</div>
   <div class="grid">
-    <div class="card"><img src="ayna-rodajli.jpg"><p>Rodajlı Ayna</p></div>
-    <div class="card"><img src="ayna-baklava.jpg"><p>Baklava Ayna</p></div>
-    <div class="card"><img src="ayna-cubuk.jpg"><p>Çubuk Ayna</p></div>
-    <div class="card"><img src="ayna-ledli.jpg"><p>Ledli Daire Ayna</p></div>
-    <div class="card"><img src="ayna-sekilli.jpg"><p>Şekilli Ayna</p></div>
+    <div class="card"><img src="ayna-rodajli.jpg" onclick="openLightbox(this.src)"><p>Rodajlı Ayna</p></div>
+    <div class="card"><img src="ayna-baklava.jpg" onclick="openLightbox(this.src)"><p>Baklava Ayna</p></div>
+    <div class="card"><img src="ayna-cubuk.jpg" onclick="openLightbox(this.src)"><p>Çubuk Ayna</p></div>
+    <div class="card"><img src="ayna-ledli.jpg" onclick="openLightbox(this.src)"><p>Ledli Daire Ayna</p></div>
+    <div class="card"><img src="ayna-sekilli.jpg" onclick="openLightbox(this.src)"><p>Şekilli Ayna</p></div>
   </div>
 </section>
 
-<!-- ÇERÇEVELER (INSTAGRAM TÜRÜ) -->
+<!-- ÇERÇEVELER -->
 <section id="frames" class="hidden">
   <div class="title">Çerçeveler</div>
   <div class="frame-grid">
-    <!-- ÖRNEK -->
-    <img src="cerceve-1.jpg">
-    <img src="cerceve-2.jpg">
-    <img src="cerceve-3.jpg">
-    <img src="cerceve-4.jpg">
-    <!-- 120’ye kadar böyle devam -->
+    <img src="cerceve-1.jpg" onclick="openLightbox(this.src)">
+    <img src="cerceve-2.jpg" onclick="openLightbox(this.src)">
+    <img src="cerceve-3.jpg" onclick="openLightbox(this.src)">
+    <img src="cerceve-4.jpg" onclick="openLightbox(this.src)">
+    <!-- cerceve-120.jpg ye kadar -->
   </div>
 </section>
 
 </main>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" onclick="closeLightbox()">
+  <img id="lightbox-img">
+</div>
 
 <script>
 function toggleMenu(){
   document.getElementById("menu").classList.toggle("active");
 }
 
+function hideAll(){
+  home.classList.add("hidden");
+  mirrors.classList.add("hidden");
+  frames.classList.add("hidden");
+}
+
 function showHome(){
   hideAll();
-  document.getElementById("home").classList.remove("hidden");
-  document.getElementById("menu").classList.remove("active");
-  window.scrollTo(0,0);
+  home.classList.remove("hidden");
+  menu.classList.remove("active");
+  scrollTo(0,0);
 }
 
 function showMirrors(){
   hideAll();
-  document.getElementById("mirrors").classList.remove("hidden");
-  window.scrollTo(0,0);
+  mirrors.classList.remove("hidden");
+  scrollTo(0,0);
 }
 
 function showFrames(){
   hideAll();
-  document.getElementById("frames").classList.remove("hidden");
-  window.scrollTo(0,0);
+  frames.classList.remove("hidden");
+  scrollTo(0,0);
 }
 
-function hideAll(){
-  document.getElementById("home").classList.add("hidden");
-  document.getElementById("mirrors").classList.add("hidden");
-  document.getElementById("frames").classList.add("hidden");
+function openLightbox(src){
+  document.getElementById("lightbox-img").src = src;
+  document.getElementById("lightbox").style.display = "flex";
+}
+
+function closeLightbox(){
+  document.getElementById("lightbox").style.display = "none";
 }
 </script>
 
