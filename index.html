@@ -15,6 +15,7 @@
   font-family:'Inter',sans-serif;
 }
 
+/* ZORLA GRİ */
 html,body{
   background:#e6e6e6;
   min-height:100vh;
@@ -64,6 +65,7 @@ header{
   background:#000;
   display:none;
   flex-direction:column;
+  z-index:999;
 }
 
 .menu a{
@@ -95,34 +97,34 @@ main{
 /* GRID */
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:28px;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:20px;
 }
 
 /* CARD */
 .card{
   background:#fff;
-  border-radius:20px;
+  border-radius:18px;
   overflow:hidden;
   text-align:center;
   cursor:pointer;
-  box-shadow:0 10px 25px rgba(0,0,0,0.08);
-  transition:transform .3s;
+  box-shadow:0 10px 25px rgba(0,0,0,.08);
+  transition:.3s;
 }
 
 .card:hover{
-  transform:scale(1.04);
+  transform:scale(1.05);
 }
 
 .card img{
   width:100%;
-  height:230px;
+  height:200px;
   object-fit:cover;
 }
 
 .card p{
-  padding:16px 0;
-  font-size:20px;
+  padding:14px 0;
+  font-size:18px;
   font-weight:600;
 }
 
@@ -206,16 +208,12 @@ main{
 
 <main>
 
+<!-- ANA SAYFA -->
 <section id="home">
   <div class="title">Ürün Grupları</div>
   <div class="grid">
 
-    <div class="card">
-      <img src="camlar.jpg">
-      <p>Camlar</p>
-    </div>
-
-    <div class="card">
+    <div class="card" onclick="showFrames()">
       <img src="cerceveler.jpg">
       <p>Çerçeveler</p>
     </div>
@@ -225,9 +223,28 @@ main{
       <p>Aynalar</p>
     </div>
 
+    <div class="card">
+      <img src="camlar.jpg">
+      <p>Camlar</p>
+    </div>
+
   </div>
 </section>
 
+<!-- ÇERÇEVELER -->
+<section id="frames" class="hidden">
+  <div class="title">Çerçeveler</div>
+  <div class="grid">
+    <div class="card"><img src="cerceve-1.jpg"><p>Çerçeve 1</p></div>
+    <div class="card"><img src="cerceve-2.jpg"><p>Çerçeve 2</p></div>
+    <div class="card"><img src="cerceve-3.jpg"><p>Çerçeve 3</p></div>
+    <div class="card"><img src="cerceve-4.jpg"><p>Çerçeve 4</p></div>
+    <div class="card"><img src="cerceve-5.jpg"><p>Çerçeve 5</p></div>
+    <div class="card"><img src="cerceve-6.jpg"><p>Çerçeve 6</p></div>
+  </div>
+</section>
+
+<!-- AYNALAR -->
 <section id="mirrors" class="hidden">
   <div class="title">Ayna Türleri</div>
   <div class="grid">
@@ -282,16 +299,25 @@ function toggleMenu(){
   document.getElementById("menu").classList.toggle("active");
 }
 
-function showMirrors(){
-  document.getElementById("home").classList.add("hidden");
-  document.getElementById("mirrors").classList.remove("hidden");
+function showHome(){
+  document.getElementById("home").classList.remove("hidden");
+  document.getElementById("frames").classList.add("hidden");
+  document.getElementById("mirrors").classList.add("hidden");
+  document.getElementById("menu").classList.remove("active");
   window.scrollTo(0,0);
 }
 
-function showHome(){
+function showFrames(){
+  document.getElementById("home").classList.add("hidden");
+  document.getElementById("frames").classList.remove("hidden");
   document.getElementById("mirrors").classList.add("hidden");
-  document.getElementById("home").classList.remove("hidden");
-  document.getElementById("menu").classList.remove("active");
+  window.scrollTo(0,0);
+}
+
+function showMirrors(){
+  document.getElementById("home").classList.add("hidden");
+  document.getElementById("frames").classList.add("hidden");
+  document.getElementById("mirrors").classList.remove("hidden");
   window.scrollTo(0,0);
 }
 </script>
